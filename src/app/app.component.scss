@@ -1,0 +1,113 @@
+$cinza-escuro : #636262;
+$cinza-claro : #7c7b7b;
+$laranja: #e6a62b;
+
+$kill-width: 100px;
+
+section, div{
+    box-sizing: border-box;
+}
+section{
+    max-width: 540px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+
+    h1{
+        text-transform: uppercase;        
+        font-size: 40px;
+        margin: 30px 0 0 0;
+        padding: 0;
+    }
+    .search{
+        display: flex;
+        width: 100%;
+        height: 45px;
+        margin: 30px 0;
+        input{
+            background: none;
+            border: 2px white solid;
+            border-right: 0 none;
+            padding: 10px;
+            font-size: 16px;
+            color: $cinza-escuro;
+            flex: 1;
+        }
+        button{
+            cursor: pointer;
+            display: block;
+            background-color: $cinza-escuro;
+            color: $laranja;
+            font-size: 16px;
+            border: 0 none;
+            min-width: 150px;
+        }
+    }
+    .kill-list{
+        flex: 1;        
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        .kill-header{
+            padding: 15px 10px;
+            background-color: #e6a62b;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            h2{
+                margin: 0;
+                text-transform: uppercase;
+            }
+            .kill{
+                width: $kill-width;
+                h2{
+                    text-align: right;
+                    background: {
+                        image: url(assets/images/skull.svg);
+                        repeat: no-repeat;
+                    }
+                }
+            }
+            .name{                
+                flex: 1;
+            }
+            img{
+                width: 30px;
+            }
+        }
+        .kill-content{
+            flex: 1;
+            background-color: $cinza-claro;
+            overflow-y: auto;
+            ul{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                li{
+                    display: flex;
+                    padding: 30px 10px 5px 10px;
+                    &:nth-child(even){                    
+                        background-color: $cinza-escuro;
+                    }
+                    span{
+                        color: white;   
+                        font-size: 20px;                     
+                        &.name{
+                            flex: 1;
+                        }                        
+                        &.kill{
+                            width: $kill-width;
+                            text-align: center;
+                            font-weight: bold;
+                            &.negative{
+                                color: $laranja;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
