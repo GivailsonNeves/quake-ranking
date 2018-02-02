@@ -1,0 +1,95 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+ion-content {
+  background-color: $background-color !important;
+}
+.toolbar-title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.tabbar{
+    background-color: $cinza-escuro !important;
+}
+.searchbar-input-container{
+    background-color: #dadada;    
+}
+
+ion-navbar{    
+    .toolbar-background
+    {
+        background-color: $cinza-escuro !important;
+    }
+    .toolbar-title{
+        color: white !important;        
+    }
+
+}
+
+ion-toolbar{
+    .toolbar-background {
+        background-color: $cinza-claro !important;
+    }
+    ion-list-header
+    {
+        background: none !important;
+        padding: 0 25px !important;
+        margin-bottom: 0 !important;
+        .info-line {
+            span{
+                color: $laranja !important;
+                text-transform: uppercase;
+                font-weight: bold;
+
+              &.kills {
+                  text-align: right;                            
+              }
+          }
+
+        }
+
+    }
+
+}
+
+.info-line{
+
+    display: flex;
+    span{
+        color: white;
+        &.kills{
+            width: $kill-width;
+            text-align: center;
+            font-weight: bold;        
+            &.negative{
+                color: $laranja;
+            }
+        }
+        &.nome{
+            flex: 1;
+        }
+    }
+}
+
+ion-item{
+    padding: 0 none !important;
+    background-color: $cinza-claro !important;
+    &:nth-child(even){
+        background-color: $cinza-escuro !important;
+    }
+}
+
+
