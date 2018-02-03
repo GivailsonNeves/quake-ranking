@@ -1,4 +1,14 @@
 page-ranking {
     
-
+    img{
+        opacity: .5;
+        display: block;
+        max-width: 100%;
+    }
+    ion-toolbar{
+        .toolbar-title{
+            text-transform: none;
+            color: white;
+        }
+    }
 }

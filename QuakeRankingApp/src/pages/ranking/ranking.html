@@ -16,13 +16,14 @@
   </ion-navbar>
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="searchInput" 
+      [hidden]="onLoad"
       [animated]="true"
       cancelButtonText = "cancelar"
       showCancelButton="false" 
       placeholder="pesquisar...">
     </ion-searchbar>
     
-      <ion-list-header no-lines>
+      <ion-list-header no-lines [hidden]="onLoad">
         <p class="info-line">
           <span class="nome">
             Nome
@@ -32,11 +33,13 @@
           </span>
         </p>
       </ion-list-header>
+      <ion-title [hidden]="!onLoad">Aguarde...</ion-title>
     
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" 
       pullingText="Pull to refresh" 
@@ -44,8 +47,10 @@
       refreshingText="Recarregando...">
     </ion-refresher-content>
   </ion-refresher>
+
   <br>
-  <ion-list no-lines>
+
+  <ion-list no-lines [hidden]="onLoad">
     <ion-item *ngFor="let r of ranking">
       <p class="info-line">
         <span class="nome">{{r.name}}</span>
@@ -53,4 +58,9 @@
       </p>
     </ion-item>
   </ion-list>
+
+  <div [hidden]="!onLoad">
+    <img src="./assets/imgs/skull.svg" alt="">
+  </div>
+
 </ion-content>

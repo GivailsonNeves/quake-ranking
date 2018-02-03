@@ -25759,3 +25759,14 @@ ion-item {
 ion-item:nth-child(even) {
   background-color: #636262 !important;
 }
+
+page-ranking img {
+  opacity: .5;
+  display: block;
+  max-width: 100%;
+}
+
+page-ranking ion-toolbar .toolbar-title {
+  text-transform: none;
+  color: white;
+}

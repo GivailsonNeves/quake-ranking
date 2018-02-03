@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,11 +11,6 @@ export class HomePage {
   tab1Root = 'RankingPage';
   tab2Root = 'ReportPage';  
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
+  constructor() {}  
 
 }

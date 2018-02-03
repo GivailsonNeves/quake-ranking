@@ -1,17 +1,28 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Config } from 'ionic-angular/config/config';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs';
 
-/*
-  Generated class for the ServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ServiceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ServiceProvider Provider');
+  private base_url: string = "";
+
+  constructor(public http: Http, 
+      _config: Config ) {
+      this.base_url = _config.get('BASE_API');
+    }
+
+  public ranking() : Observable<any>{
+    return this.http.get(`${this.base_url}/service.php?type=ranking`)
+      .map(res => res.json());
+  }
+
+  public relatorio() : Observable<any> {
+    return this.http.get(`${this.base_url}/service.php?type=relatorio`)
+      .map(res => res.json());
   }
 
 }

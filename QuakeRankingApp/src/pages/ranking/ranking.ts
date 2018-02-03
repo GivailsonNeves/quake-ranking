@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
+import { ServiceProvider } from '../../providers/service/service';
 
-/**
- * Generated class for the RankingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -17,9 +12,9 @@ export class RankingPage {
 
   private searchInput: string = "";
   private ranking: any[] = [];
+  private onLoad: boolean = true;
 
-  constructor() {
-  }
+  constructor(private _service: ServiceProvider) {}
 
   ionViewDidLoad() {
     this._loadRanking();
@@ -32,6 +27,11 @@ export class RankingPage {
   
   private _loadRanking()
   {
+    this._service.ranking()      
+      .subscribe(
+        res => console.log(res),
+        err => console.error(err)
+      )
     for(let i = -10; i < 50; i++){
       this.ranking.push({ "name" : "fulano", "kills" : i});
     }
