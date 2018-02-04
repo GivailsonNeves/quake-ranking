@@ -40,11 +40,12 @@
 
 <ion-content padding>
 
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" 
-      pullingText="Pull to refresh" 
-      refreshingSpinner="circles" 
-      refreshingText="Recarregando...">
+  <ion-refresher enabled="onLoad" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="arrow-dropdown"       
+      pullingText="puxe para recarregar" 
+      refreshingSpinner="dots" 
+      refreshingText="Carregando...">
     </ion-refresher-content>
   </ion-refresher>
 
@@ -53,8 +54,8 @@
   <ion-list no-lines [hidden]="onLoad">
     <ion-item *ngFor="let r of ranking">
       <p class="info-line">
-        <span class="nome">{{r.name}}</span>
-        <span [ngClass]="{'negative' : r.kills < 0}" class="kills">{{r.kills}}</span>
+        <span class="nome">{{r.nome}}</span>
+        <span [ngClass]="{'negative' : r.total_mortes < 0}" class="kills">{{r.total_mortes}}</span>
       </p>
     </ion-item>
   </ion-list>

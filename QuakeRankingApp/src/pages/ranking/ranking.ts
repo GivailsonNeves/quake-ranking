@@ -29,12 +29,13 @@ export class RankingPage {
   {
     this._service.ranking()      
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.ranking = res.data;
+          this.onLoad = false;
+        },
         err => console.error(err)
       )
-    for(let i = -10; i < 50; i++){
-      this.ranking.push({ "name" : "fulano", "kills" : i});
-    }
+    
   }
 
   public doRefresh(refresher){
