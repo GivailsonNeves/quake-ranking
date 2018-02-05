@@ -22,15 +22,15 @@ webpackEmptyAsyncContext.id = 159;
 
 var map = {
 	"../pages/home/home.module": [
-		675,
+		673,
 		2
 	],
 	"../pages/ranking/ranking.module": [
-		673,
+		674,
 		1
 	],
 	"../pages/report/report.module": [
-		674,
+		675,
 		0
 	]
 };
@@ -155,9 +155,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], __WEBPACK_IMPORTED_MODULE_8__app_config__["a" /* APP_CONFIG */], {
                     links: [
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ranking/ranking.module#RankingPageModule', name: 'RankingPage', segment: 'ranking', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/report/report.module#ReportPageModule', name: 'ReportPage', segment: 'report', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/report/report.module#ReportPageModule', name: 'ReportPage', segment: 'report', priority: 'low', defaultHistory: [] }
                     ]
                 }),
             ],

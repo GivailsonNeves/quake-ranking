@@ -25721,6 +25721,9 @@ ion-toolbar ion-list-header .info-line span {
 
 ion-toolbar ion-list-header .info-line span.kills {
   text-align: right;
+  background-image: url("../assets/imgs/skull.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 
 .info-line {
@@ -25735,7 +25738,7 @@ ion-toolbar ion-list-header .info-line span.kills {
 }
 
 .info-line span.kills {
-  width: 100px;
+  width: 80px;
   text-align: center;
   font-weight: bold;
 }

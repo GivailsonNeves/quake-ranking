@@ -56,6 +56,11 @@ ion-toolbar{
 
               &.kills {
                   text-align: right;                            
+                  background: {
+                      image: url('../assets/imgs/skull.svg');
+                      position: left center;
+                      repeat: no-repeat;
+                  }
               }
           }
 

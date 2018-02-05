@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 673:
+/***/ 674:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RankingPageModule", function() { return RankingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ranking__ = __webpack_require__(676);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ranking__ = __webpack_require__(677);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var RankingPageModule = (function () {
 
 /***/ }),
 
-/***/ 676:
+/***/ 677:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -106,10 +106,9 @@ var RankingPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-ranking',template:/*ion-inline-start:"/Applications/XAMPP/xamppfiles/htdocs/quake-ranking/QuakeRankingApp/src/pages/ranking/ranking.html"*/'<!--\n  Generated template for the RankingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Ranking</ion-title>      \n  </ion-navbar>\n  <ion-toolbar>\n    <ion-searchbar [(ngModel)]="searchInput" \n      [hidden]="onLoad"\n      [animated]="true"\n      cancelButtonText = "cancelar"\n      (ionInput)="filtrarJogador($event)"\n      showCancelButton="false" \n      placeholder="pesquisar...">\n    </ion-searchbar>\n    \n      <ion-list-header no-lines [hidden]="onLoad">\n        <p class="info-line">\n          <span class="nome">\n            Nome\n          </span>\n          <span class="kills">\n            Kills\n          </span>\n        </p>\n      </ion-list-header>\n      <ion-title [hidden]="!onLoad">Aguarde...</ion-title>\n    \n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-refresher [enabled]="!onLoad" \n    (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content \n      pullingIcon="arrow-dropdown"       \n      pullingText="puxe para recarregar" \n      refreshingSpinner="dots" \n      refreshingText="Carregando...">\n    </ion-refresher-content>\n  </ion-refresher>\n\n  <br>\n\n  <ion-list no-lines [hidden]="onLoad">\n    <ion-item *ngFor="let r of ranking">\n      <p class="info-line">\n        <span class="nome">{{r.nome}}</span>\n        <span [ngClass]="{\'negative\' : r.total_mortes < 0}" class="kills">{{r.total_mortes}}</span>\n      </p>\n    </ion-item>\n  </ion-list>\n\n  <div [hidden]="!onLoad">\n    <img src="./assets/imgs/skull.svg" alt="">\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Applications/XAMPP/xamppfiles/htdocs/quake-ranking/QuakeRankingApp/src/pages/ranking/ranking.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_service_service__["a" /* ServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_service_service__["a" /* ServiceProvider */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_service_service__["a" /* ServiceProvider */]])
     ], RankingPage);
     return RankingPage;
-    var _a;
 }());
 
 //# sourceMappingURL=ranking.js.map
