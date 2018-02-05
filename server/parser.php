@@ -1,19 +1,21 @@
 <?php
-    require_once './utils/uploader.php';
-    require_once './utils/reader.php';
-    require_once './models/game.php';
-    require_once './models/player.php';
+
+    require_once( getcwd() . '/utils/uploader.php');
+    require_once( getcwd() . '/utils/reader.php');
+    require_once( getcwd() . "/database/database.php");
 
     class Parser
     {
         private $uploader = null;
         private $reader = null;
         private $games;
+        private $players;
+        private $db = null;
         
         public function __construct()
         {
             $this->games = array();
-            $this->uploader = new UploaderLog('log_file');            
+            $this->uploader = new UploaderLog('log_file'); 
         }
 
         public function convert()
@@ -21,7 +23,9 @@
             if( $this->uploader->upload_file() )
             {
                 $this->reader = new LogReader($this->uploader->get_file_path());
-                $this->games = $this->reader->read_games();
+                $this->reader->read();
+                $this->games = $this->reader->get_games();
+                $this->players = $this->reader->get_players();
                 $this->save();
 
             }else{
@@ -30,13 +34,21 @@
         }
 
         public function save()
-        {
-            echo sizeof($this->games);
-            echo '<br>-----------<br>';
-            foreach( $this->games as $g){
-                var_dump($g);
-                echo '<br>-----------<br>';
-            }            
+        {           
+            try{                    
+
+                $this->db = new DatabaseConnect();                               
+                $this->db->clear();
+
+                $this->db->store_players($this->players);
+                
+                foreach( $this->games as $g){
+                    $this->db->store_game($g);
+                }   
+        
+            } catch( Exception $e){
+                echo $e->getMessage();
+            }   
         }
 
     }

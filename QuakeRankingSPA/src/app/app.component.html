@@ -1,25 +1,55 @@
-<section>
-  <h1>Ranking</h1>
+<section class="tab-ranking" *ngIf="currentTab == 1">  
+    <h1>Ranking</h1>
+    <div class="search">
+      <input type="text" [(ngModel)]="searchText" placeholder="Busca por nome" />
+      <button (click)="buscar()">Buscar</button>
+    </div>
+    <div class="kill-list">
+      <div class="kill-header">
+        <div class="name">
+          <h2>Name</h2>
+        </div>
+        <div class="kill">
+          <h2>Kills</h2>
+        </div>
+      </div>
+      <div class="kill-content">
+        <ul>
+          <li *ngFor="let k of kills">
+            <span class="name">{{k.nome}}</span>
+            <span [ngClass]="{ 'negative' : k.total_mortes < 0 }" class="kill">{{k.total_mortes}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>  
+</section>
+<section class="tab-report" *ngIf="currentTab == 2">
+  <h1>Relatório</h1>
   <div class="search">
-    <input type="text" placeholder="Busca por nome" />
-    <button>Buscar</button>
+    <input type="text" [(ngModel)]="searchText" placeholder="Busca por nome" />
+    <button (click)="buscar()">Buscar</button>
   </div>
   <div class="kill-list">
     <div class="kill-header">
       <div class="name">
         <h2>Name</h2>
       </div>
-      <div class="kill">        
+      <div class="kill">
         <h2>Kills</h2>
       </div>
     </div>
     <div class="kill-content">
       <ul>
         <li *ngFor="let k of kills">
-          <span class="name">{{k.user}}</span>
-          <span [ngClass]="{ 'negative' : k.kills < 0 }" class="kill">{{k.kills}}</span>
-        </li>        
+          <span class="name">{{k.nome}}</span>
+          <span [ngClass]="{ 'negative' : k.total_mortes < 0 }" class="kill">{{k.total_mortes}}</span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
+
+<div class="tabChanger">
+  <button (click)="currentTab = 1" [ngClass]="{'active' : currentTab == 1}">Ranking</button>
+  <button (click)="currentTab = 2" [ngClass]="{'active' : currentTab == 2}">Relátorio</button>
+</div>

@@ -1,5 +1,5 @@
 <?php 
-    require_once("./database/database.php");
+    require_once( getcwd() . "/database/database.php");
 
     header("Content-Type: application/json; charset=UTF-8");
     header("Access-Control-Allow-Origin: *");
@@ -51,7 +51,7 @@
                 $this->code_return = 400;    
                 return false;
             }                
-                        
+
             return true;
         }
 
@@ -59,11 +59,11 @@
         {
             switch ($this->tipo_servico) {
                 case 'ranking':
-                    # code...
+                        $this->result = array( "data" => $this->db->list_ranking(), "result" => FALSE );
                     break;
                 
                 case 'relatorio':
-                    # code...
+                        $this->result = array( "data" => $this->db->list_deaths(), "result" => FALSE );
                     break;
             }
         }

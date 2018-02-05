@@ -4,10 +4,10 @@
         public $nome;
         public $total_mortes;
 
-        public function __construct($nome)
+        public function __construct($nome, $total_mortes = 0)
         {
             $this->nome = $nome;
-            $this->total_mortes = 0;
+            $this->total_mortes = $total_mortes;
         }
 
         public function decrement_mortes()
