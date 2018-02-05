@@ -7,15 +7,54 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Relatório</ion-title>
+    <ion-title>Relatório</ion-title>    
   </ion-navbar>
   <ion-toolbar>
-    
+    <ion-item no-lines>
+      <ion-label>Filtrar Jogo</ion-label>
+      <ion-select [(ngModel)]="filtro"
+        okText="Filtrar" cancelText="Cancelar">        
+          <ion-option value="">Todos os jogos</ion-option>
+          <ion-option *ngFor="let r of relatorio" 
+          value="{{r.nome}}">{{r.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item  no-lines>
+      <ion-label>Filtrar Tipo</ion-label>
+      <ion-select [(ngModel)]="filtroTipo"
+        okText="Filtrar" cancelText="Cancelar">        
+          <ion-option value="">Todas</ion-option>
+          <ion-option *ngFor="let t of tiposMorte" 
+          value="{{t}}">{{t}}</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <table *ngFor="let r of relatorio" [hidden]="filtro != '' && filtro != r.nome">
+    <thead>
+      <tr>
+        <th colspan="2">{{r.nome}}</th>        
+      </tr>
+      <tr>
+        <td>Tipo de morte</td>
+        <td>Total</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of r.mortes" [hidden]="filtroTipo != '' && filtroTipo != m.tipo">
+        <td>{{m.tipo}}</td>
+        <th>{{m.total}}</th>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total Mortes</td>
+        <th>{{r.total_mortes}}</th>
+      </tr>
+    </tfoot>
+  </table>
 </ion-content>

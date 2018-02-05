@@ -11,6 +11,7 @@ import { ServiceProvider } from '../../providers/service/service';
 export class RankingPage {
 
   private searchInput: string = "";
+  private _ranking: any[] = [];
   private ranking: any[] = [];
   private onLoad: boolean = true;
 
@@ -25,24 +26,43 @@ export class RankingPage {
 
   }
   
-  private _loadRanking()
+  private _loadRanking(refresher = null)
   {
+    this.searchInput = "";
     this._service.ranking()      
       .subscribe(
         res => {
-          this.ranking = res.data;
+          this._ranking = this.ranking = res.data;
+          this.onLoad = false;
+          if(refresher){
+            refresher.complete();
+          }
           this.onLoad = false;
         },
-        err => console.error(err)
+        err => {
+          if (refresher) {
+            refresher.complete();
+          }
+          this.onLoad = false;
+          console.error(err);
+        }
       )
     
   }
 
+  public filtrarJogador(ev: any){
+    let val = ev.target.value;
+
+    if(!val){
+      this.ranking = this._ranking;
+    }else{      
+      this.ranking = this._ranking
+        .filter(r => r.nome.toLowerCase().indexOf(val.toLowerCase()) != -1 );
+    }
+  }
+
   public doRefresh(refresher){
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    this._loadRanking(refresher);
   }
 
 }

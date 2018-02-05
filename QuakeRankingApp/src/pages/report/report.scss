@@ -1,3 +1,38 @@
 page-report {
-
+    table{
+        width: 100%;
+        margin-bottom: 20px;
+        color: white;
+        background-color: $cinza-claro;
+        tr{
+            td,th{
+                padding: 5px 10px;
+            }
+        }
+        thead{
+            border-bottom: 1px $laranja solid;
+            tr{
+                th{
+                    text-transform: uppercase;
+                    color: $laranja;
+                }
+                td{
+                    font-weight: bold;
+                }
+            }
+        }
+        tbody{
+            tr{
+                &:nth-child(even){
+                    background-color: $cinza-escuro;            
+                }
+            }
+        }
+        tfoot{            
+            background: $cinza-escuro;
+            th{
+                color: $laranja;
+            }
+        }
+    }
 }

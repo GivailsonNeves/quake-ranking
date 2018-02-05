@@ -7,18 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Ranking</ion-title>    
-  <ion-buttons end>
-    <button (click)="logOut()" color="light" ion-button>
-      <ion-icon name="log-out"></ion-icon>
-    </button>    
-  </ion-buttons>
+    <ion-title>Ranking</ion-title>      
   </ion-navbar>
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="searchInput" 
       [hidden]="onLoad"
       [animated]="true"
       cancelButtonText = "cancelar"
+      (ionInput)="filtrarJogador($event)"
       showCancelButton="false" 
       placeholder="pesquisar...">
     </ion-searchbar>
@@ -40,7 +36,8 @@
 
 <ion-content padding>
 
-  <ion-refresher enabled="onLoad" (ionRefresh)="doRefresh($event)">
+  <ion-refresher [enabled]="!onLoad" 
+    (ionRefresh)="doRefresh($event)">
     <ion-refresher-content 
       pullingIcon="arrow-dropdown"       
       pullingText="puxe para recarregar" 

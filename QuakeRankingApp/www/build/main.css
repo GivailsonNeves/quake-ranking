@@ -25770,3 +25770,39 @@ page-ranking ion-toolbar .toolbar-title {
   text-transform: none;
   color: white;
 }
+
+page-report table {
+  width: 100%;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #7c7b7b;
+}
+
+page-report table tr td, page-report table tr th {
+  padding: 5px 10px;
+}
+
+page-report table thead {
+  border-bottom: 1px #e6a62b solid;
+}
+
+page-report table thead tr th {
+  text-transform: uppercase;
+  color: #e6a62b;
+}
+
+page-report table thead tr td {
+  font-weight: bold;
+}
+
+page-report table tbody tr:nth-child(even) {
+  background-color: #636262;
+}
+
+page-report table tfoot {
+  background: #636262;
+}
+
+page-report table tfoot th {
+  color: #e6a62b;
+}

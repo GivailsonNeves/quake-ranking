@@ -16,8 +16,12 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class ReportPage {
 
-  constructor(private _service: ServiceProvider) {
-  }
+  private relatorio:any[] = [];
+  private tiposMorte:String[] = [];
+  private filtro: String = "";  
+  private filtroTipo: String = "";  
+
+  constructor(private _service: ServiceProvider) {}
 
   ionViewDidLoad() {
     this._loadReport();
@@ -27,7 +31,13 @@ export class ReportPage {
   {
     this._service.relatorio()
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.relatorio = res.data;
+          for (let i = 0; i < this.relatorio[0].mortes.length; i++)
+          {
+            this.tiposMorte.push(this.relatorio[0].mortes[i].tipo);
+          }
+        },
         err => console.log(err)
       )
   }
