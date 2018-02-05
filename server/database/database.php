@@ -4,20 +4,35 @@
     require_once( getcwd() . '/models/game.php');
     require_once( getcwd() . '/models/player.php');
 
+    /**
+     * Classe de gestão do banco de dados
+     */
     class DatabaseConnect{
+
+        //endereço do servidor de banco
         private $host = "localhost";
+        //nome da base de dados
         private $db_name = "quake";
+        //nome do usuário do banco de dados
         private $user = "root";
+        //senha do banco de dados
         private $pass = "";
 
+        //refer~encia a conexão ao banco
         private $db = null;
 
+        /**
+         * construtor, inicializa a conexão ao banco
+         */
         public function __construct()
         {
             $this->db = @mysqli_connect($this->host, $this->user, $this->pass, $this->db_name);                
             $this->check_connection();
         }
 
+        /**
+         * responsável por verificar se a conexão ao banco obteve erro
+         */
         private function check_connection()
         {
             if(!$this->db){
@@ -29,6 +44,9 @@
             }
         }
 
+        /**
+         * função para salvar os jogos no banco de dados
+         */
         public function store_game(Game $game)
         {
             if($game instanceof Game){                
@@ -46,6 +64,9 @@
             }
         }
 
+        /**
+         * função para salvar as mortes de cada partida, processo interno
+         */
         private function store_deaths($partida_id, $morte)
         {
             $q = "INSERT INTO morte(partida_id, killer, killed, tipo_morte_id) VALUES ($partida_id,";
@@ -58,6 +79,9 @@
                 return '';
         }
 
+        /**
+         * Salva os jogadores na tabela de refer~encia
+         */
         public function store_players($players)
         {
             foreach($players as $p){
@@ -66,6 +90,9 @@
             }
         }
 
+        /**
+         * busca no banco de dados os jogadores e sua quantidade de mortes, devolve um vetor de Player
+         */
         public function list_ranking()
         {
             $ranking = array();
@@ -79,6 +106,9 @@
             return $ranking;
         }
 
+        /**
+         * Retorna uma listagem de partidas com a quantidade de mortes, agrupada por tipo de morte
+         */
         public function list_deaths()
         {
 
@@ -112,6 +142,9 @@
             return $partidas;
         }
 
+        /**
+         * função interna que retorna a soma da quantidade de mortes por tipo e partida
+         */
         private function get_count_deaths($id_partida, $id_tipo_morte)
         {            
             $rslt = mysqli_query($this->db, "SELECT count(*) as total FROM morte where partida_id = $id_partida and tipo_morte_id = $id_tipo_morte");
@@ -121,12 +154,18 @@
             return $row->total ? $row->total : 0;
         }
 
+        /**
+         * função de limpeza da base de dados
+         */
         public function clear(){
             mysqli_query($this->db, "TRUNCATE TABLE morte");
             mysqli_query($this->db, "TRUNCATE TABLE jogador");
             mysqli_query($this->db, "TRUNCATE TABLE partida");
         }
 
+        /**
+         * Destrutor da classe, finaliza a conexão ao banco de dados
+         */
         public function __destruct()
         {
             if($this->db)

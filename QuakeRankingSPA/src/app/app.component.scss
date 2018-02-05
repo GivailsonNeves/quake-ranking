@@ -131,3 +131,57 @@ section{
         }
     }
 }
+
+.tab-report{
+    .search{
+        display: block;
+        label{
+            display: flex;
+            width: 100%;
+            margin-bottom: 10px;
+            height: 30px;
+            justify-content: center;
+            select{
+                flex: 1;
+                margin-left: 10px;
+                height: 30px;
+            }
+        }
+    }
+    table{
+        width: 100%;
+        border-bottom: 40px white solid;
+        color: white;
+        background-color: $cinza-claro;
+        tr{
+            td,th{
+                padding: 5px 10px;
+            }
+        }
+        thead{
+            border-bottom: 1px $laranja solid;
+            tr{
+                th{
+                    text-transform: uppercase;
+                    color: $laranja;
+                }
+                td{
+                    font-weight: bold;
+                }
+            }
+        }
+        tbody{
+            tr{
+                &:nth-child(even){
+                    background-color: $cinza-escuro;            
+                }
+            }
+        }
+        tfoot{            
+            background: $cinza-escuro;
+            th{
+                color: $laranja;
+            }
+        }
+    }
+}

@@ -8,11 +8,17 @@ import { ServiceProvider } from 'provider/service';
 })
 export class AppComponent {
   
-  private report : any[] = [];
+  private tiposMorte : String[] = [];
+  private relatorio : any[] = [];
   private kills : any[] = [];
   private _kills : any[] = [];
   private searchText: String = "";
+  private filtro: String = "";
+  private filtroTipo: String = "";
   private currentTab: number = 1;
+
+
+  
 
   constructor(private _service: ServiceProvider){}
 
@@ -28,7 +34,10 @@ export class AppComponent {
     this._service.relatorio()
       .subscribe(
       res => {
-        this.report = res.data
+        this.relatorio = res.data;
+        for (let i = 0; i < this.relatorio[0].mortes.length; i++) {
+          this.tiposMorte.push(this.relatorio[0].mortes[i].tipo);
+        }
       },
       err => console.log(err)
       );

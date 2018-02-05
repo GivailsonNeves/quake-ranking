@@ -26,25 +26,47 @@
 <section class="tab-report" *ngIf="currentTab == 2">
   <h1>Relatório</h1>
   <div class="search">
-    <input type="text" [(ngModel)]="searchText" placeholder="Busca por nome" />
-    <button (click)="buscar()">Buscar</button>
-  </div>
+    <label for="">
+      Filtrar por partida:
+      <select name="partida" [(ngModel)]="filtro" id="">
+        <option value="">Todas</option>
+        <option  *ngFor="let r of relatorio" value="{{r.nome}}">{{r.nome}}</option>
+      </select>
+    </label>
+    <label for="">
+      Filtrar por tipo:
+      <select name="tipo" [(ngModel)]="filtroTipo" id="">
+        <option value="">Todos</option>
+        <option  *ngFor="let t of tiposMorte" 
+          value="{{t}}">{{t}}</option>
+      </select>
+    </label>
+  </div>    
   <div class="kill-list">
-    <div class="kill-header">
-      <div class="name">
-        <h2>Name</h2>
-      </div>
-      <div class="kill">
-        <h2>Kills</h2>
-      </div>
-    </div>
     <div class="kill-content">
-      <ul>
-        <li *ngFor="let k of kills">
-          <span class="name">{{k.nome}}</span>
-          <span [ngClass]="{ 'negative' : k.total_mortes < 0 }" class="kill">{{k.total_mortes}}</span>
-        </li>
-      </ul>
+      <table *ngFor="let r of relatorio" [hidden]="filtro != '' && filtro != r.nome">
+        <thead>
+          <tr>
+            <th colspan="2">{{r.nome}}</th>
+          </tr>
+          <tr>
+            <td>Tipo de morte</td>
+            <td>Total</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of r.mortes" [hidden]="filtroTipo != '' && filtroTipo != m.tipo">
+            <td>{{m.tipo}}</td>
+            <th>{{m.total}}</th>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Mortes</td>
+            <th>{{r.total_mortes}}</th>
+          </tr>
+        </tfoot>
+      </table>      
     </div>
   </div>
 </section>
