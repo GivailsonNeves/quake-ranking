@@ -230,7 +230,7 @@ var MyApp = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_CONFIG; });
 var APP_CONFIG = {
-    "BASE_API": "http://localhost/quake-ranking/server"
+    "BASE_API": "http://acptdev.com.br/hml/quake/server"
 };
 //# sourceMappingURL=app-config.js.map
 

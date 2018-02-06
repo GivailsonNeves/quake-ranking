@@ -6,7 +6,8 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class ServiceProvider {
 
-    private base_url: string = "http://localhost/quake-ranking/server";
+    //private base_url: string = "http://localhost/quake-ranking/server";
+    private base_url: string = window['baseApi'];
 
     constructor(public http: Http) {       
     }
