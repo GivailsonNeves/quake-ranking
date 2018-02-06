@@ -7,6 +7,8 @@
 
 # dependencies
 /QuakeRankingApp/node_modules
+/QuakeRankingApp/platforms
+/QuakeRankingApp/plugins
 /QuakeRankingSPA/node_modules
 
 # IDEs and editors
